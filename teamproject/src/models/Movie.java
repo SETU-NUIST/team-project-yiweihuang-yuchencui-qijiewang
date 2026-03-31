@@ -18,10 +18,16 @@ public class Movie {
         this.genre = genre;
         this.review = review;
     }
-
-    public Movie() {
-        this("unknown", "unknown", 0, (double) 0.0F, "unknown", "empty");
+    public Movie() {//人类语言
+        this.title="unknown";
+        this.director="unknown";
+        this.year=0;
+        this.rating=0.0;
+        this.genre="unknown";
+        this.review="empty";
     }
+
+
 
     public String getTitle() {
         return this.title;
@@ -53,7 +59,8 @@ public class Movie {
 
 
     public void setRating(double rating) {
-        if (rating >= (double) 0.0F && rating <= (double) 10.0F) {
+        if (rating >= (double) 0.0F && rating <= (double) 10.0F)
+        {
             this.rating = rating;
         }
 
@@ -90,7 +97,7 @@ public class Movie {
 
 
 
-    public int getRatingLevel(double rating) {
+    public int getRatingLevel(double rating) {       //改写成人类语言
         if (this.rating >= 9.0) {
             return 1;
         } else if (this.rating >= 8.0) {

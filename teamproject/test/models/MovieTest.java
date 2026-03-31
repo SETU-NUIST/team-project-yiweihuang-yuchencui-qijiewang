@@ -10,14 +10,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MovieTest {
 
-    // 测试 getTitle 方法：验证获取标题是否正确
+    // 测试 getTitle 方法
     @Test
     void getTitle() {
         Movie movie = new Movie("流浪地球", "郭帆", 2023, 7.9, "科幻", "特效震撼");
         assertEquals("流浪地球", movie.getTitle());
     }
 
-    // 测试 setTitle 方法：验证设置标题后获取是否正确
+    // 测试 setTitle 方法
     @Test
     void setTitle() {
         Movie movie = new Movie();
@@ -25,14 +25,14 @@ class MovieTest {
         assertEquals("流浪地球2", movie.getTitle());
     }
 
-    // 测试 getDirector 方法：验证获取导演是否正确
+    // 测试 getDirector 方法
     @Test
     void getDirector() {
         Movie movie = new Movie("流浪地球", "郭帆", 2023, 7.9, "科幻", "特效震撼");
         assertEquals("郭帆", movie.getDirector());
     }
 
-    // 测试 setDirector 方法：验证设置导演后获取是否正确
+    // 测试 setDirector 方法
     @Test
     void setDirector() {
         Movie movie = new Movie();
@@ -40,14 +40,14 @@ class MovieTest {
         assertEquals("郭帆", movie.getDirector());
     }
 
-    // 测试 getYear 方法：验证获取年份是否正确
+    // 测试 getYear 方法
     @Test
     void getYear() {
         Movie movie = new Movie("流浪地球", "郭帆", 2023, 7.9, "科幻", "特效震撼");
         assertEquals(2023, movie.getYear());
     }
 
-    // 测试 setYear 方法：验证设置年份后获取是否正确
+    // 测试 setYear 方法
     @Test
     void setYear() {
         Movie movie = new Movie();
@@ -55,14 +55,14 @@ class MovieTest {
         assertEquals(2024, movie.getYear());
     }
 
-    // 测试 getRating 方法：验证获取评分是否正确（浮点数需指定精度）
+    // 测试 getRating 方法
     @Test
     void getRating() {
         Movie movie = new Movie("流浪地球", "郭帆", 2023, 7.9, "科幻", "特效震撼");
         assertEquals(7.9, movie.getRating(), 0.001);
     }
 
-    // 测试 setRating 方法：验证设置评分后获取是否正确
+    // 测试 setRating 方法
     @Test
     void setRating() {
         Movie movie = new Movie();
@@ -70,14 +70,14 @@ class MovieTest {
         assertEquals(8.2, movie.getRating(), 0.001);
     }
 
-    // 测试 getGenre 方法：验证获取类型是否正确
+    // 测试 getGenre 方法
     @Test
     void getGenre() {
         Movie movie = new Movie("流浪地球", "郭帆", 2023, 7.9, "科幻", "特效震撼");
         assertEquals("科幻", movie.getGenre());
     }
 
-    // 测试 setGenre 方法：验证设置类型后获取是否正确
+    // 测试 setGenre 方法
     @Test
     void setGenre() {
         Movie movie = new Movie();
@@ -85,14 +85,14 @@ class MovieTest {
         assertEquals("灾难", movie.getGenre());
     }
 
-    // 测试 getReview 方法：验证获取影评是否正确
+    // 测试 getReview 方法
     @Test
     void getReview() {
         Movie movie = new Movie("流浪地球", "郭帆", 2023, 7.9, "科幻", "特效震撼");
         assertEquals("特效震撼", movie.getReview());
     }
 
-    // 测试 setReview 方法：验证设置影评后获取是否正确
+    // 测试 setReview 方法
     @Test
     void setReview() {
         Movie movie = new Movie();
@@ -100,7 +100,7 @@ class MovieTest {
         assertEquals("剧情紧凑", movie.getReview());
     }
 
-    // 测试 toString 方法：验证输出字符串包含所有关键信息
+    // 测试 toString 方法
     @Test
     void testToString() {
         Movie movie = new Movie("流浪地球", "郭帆", 2023, 7.9, "科幻", "特效震撼");
@@ -114,7 +114,7 @@ class MovieTest {
 //        assertTrue(result.contains("特效震撼"));
     }
 
-    // 测试 getRatingLevel 方法：验证不同评分区间对应的等级
+    // 测试 getRatingLevel 方法
     @Test
     void getRatingLevel() {
         Movie movie = new Movie();

@@ -59,7 +59,7 @@ public class MovieManager {
 
 
     public MovieManager() {
-        // 构造函数不再需要初始化 Scanner
+
     }
 
     /**
@@ -83,8 +83,7 @@ public class MovieManager {
         };
 
         while (true) {
-            int choice = JOptionPane.showOptionDialog(null, "Select operation:",
-                    "Movie Manager", 0, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+            int choice = JOptionPane.showOptionDialog(null, "Select operation:", "Movie Manager", 0, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
 
             if (choice == -1 || choice == 9) { // 点击关闭或选择 Log out
                 JOptionPane.showMessageDialog(null, "Logged out!");
@@ -113,8 +112,8 @@ public class MovieManager {
             return;
         }
 
-        StringBuilder sb = new StringBuilder("📋 models.Movie List:\n");
-        for (int i = 0; i < addMovie.size(); i++) {
+        StringBuilder sb = new StringBuilder("models.Movie List:\n");
+        for (int i = 0; i < addMovie.size(); i++) {//遍历
             sb.append(String.format("%d. 《%s》\n", i + 1, addMovie.get(i).getTitle()));
         }
         sb.append("\nEnter number to view details (0 to return):");
@@ -125,7 +124,7 @@ public class MovieManager {
             if (index > 0 && index <= addMovie.size()) {
                 Movie selected = addMovie.get(index - 1);
                 String detail = String.format(
-                        "🎬 models.Movie Details\n" + "=".repeat(20) +
+                        "models.Movie Details\n" + "=".repeat(20) +
                                 "\nTitle: %s\nDirector: %s\nYear: %d\nRating: %.1f/10\nGenre: %s\nReview: %s",
                         selected.getTitle(), selected.getDirector(), selected.getYear(),
                         selected.getRating(), selected.getGenre(), selected.getReview()
@@ -164,7 +163,7 @@ public class MovieManager {
         String keyword = JOptionPane.showInputDialog("Enter keyword:");
         if (keyword == null || keyword.isEmpty()) return;
 
-        StringBuilder results = new StringBuilder("🔍 Search Results:\n");
+        StringBuilder results = new StringBuilder("Search Results:\n");
         boolean found = false;
 
         for (Movie m : addMovie) {
@@ -266,7 +265,7 @@ public class MovieManager {
             }
         }
 
-        StringBuilder sb = new StringBuilder("🏆 models.Movie Rating Ranking:\n");
+        StringBuilder sb = new StringBuilder("models.Movie Rating Ranking:\n");
         for (int i = 0; i < sortedList.size(); i++) {
             Movie m = sortedList.get(i);
             sb.append(String.format("Rank %d: %.1f - %s\n", i + 1, m.getRating(), m.getTitle()));
