@@ -13,6 +13,7 @@ import java.io.IOException;
 
 public class MovieManager {
     private ArrayList<Movie> addMovie = new ArrayList<>();
+    SupportSystem supportSystem = new SupportSystem();
     public void saveToXML() {
         XStream xstream = new XStream(new DomDriver());
         xstream.allowTypes(new Class[]{Movie.class});
@@ -79,7 +80,7 @@ public class MovieManager {
     public void showMainMenu() {
         String[] options = {
                 "View all", "Add", "Search", "Delete", "Modify",
-                "By Level", "Ranking", "Save XML", "Load XML", "Log out"
+                "By Level", "Ranking", "Save XML", "Load XML", "Log out","Tech Support"
         };
 
         while (true) {
@@ -101,6 +102,7 @@ public class MovieManager {
                 case 6 -> showRatingRanking();
                 case 7 -> saveToXML();
                 case 8 -> loadFromXML();
+                case 10 -> supportSystem.initSupportSystem();
             }
         }
     }

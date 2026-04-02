@@ -6,7 +6,6 @@ import javax.swing.JOptionPane;
 
 public class Main {
     public static void main(String[] args) {
-        boolean flag = true;
         JOptionPane.showMessageDialog(
                 null,
                 "Welcome to Douban models.Movie Management System",
