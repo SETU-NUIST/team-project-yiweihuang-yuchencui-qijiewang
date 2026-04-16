@@ -75,6 +75,7 @@ public class Movie {
         this.review = review;
     }
 
+    @Override
     public String toString() {
         return String.format("《%s》(%d) - director:%s - rating:%.1f", this.title, this.year, this.director, this.rating);
     }
