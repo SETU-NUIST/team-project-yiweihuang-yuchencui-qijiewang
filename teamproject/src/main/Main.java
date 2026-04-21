@@ -19,8 +19,6 @@ public class Main {
 
         while(true)
         {
-            
-
             username = JOptionPane.showInputDialog(
                 null,
                 "Please enter your username:",
@@ -36,8 +34,16 @@ public class Main {
 
             String correctUsername = "Qijie,Wang";
             String correctPassword = "123456";
+            if(password == null || username == null)                {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Password and username cannot be empty",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            }
 
-                if (password.equals(correctPassword) && username.equals(correctUsername))
+            else if (password.equals(correctPassword) && username.equals(correctUsername))
                 {
 
                     JOptionPane.showMessageDialog(
@@ -48,15 +54,15 @@ public class Main {
                     );
                     break;
                 }
-                else
-                {
-                    JOptionPane.showMessageDialog(
-                            null,
-                            "Wrong password, please try again",
-                            "Error",
-                            JOptionPane.ERROR_MESSAGE
-                    );
-                }
+            else
+            {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Wrong password or username, please try again",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            }
 
         }
 
