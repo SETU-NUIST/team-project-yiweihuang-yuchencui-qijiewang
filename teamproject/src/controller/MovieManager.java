@@ -12,6 +12,9 @@ import java.io.IOException;
 
 
 public class MovieManager {
+    public MovieManager() {
+
+    }
     private ArrayList<Movie> addMovie = new ArrayList<>();
     SupportSystem supportSystem = new SupportSystem();
     public void saveToXML() {
@@ -21,15 +24,15 @@ public class MovieManager {
             xstream.toXML(addMovie, writer);
             JOptionPane.showMessageDialog(
                     null,
-                    "数据已成功保存到 movies.xml",
-                    "保存成功",
+                    "The data has been saved to movies.xml",
+                    "saved successfully" ,
                     JOptionPane.INFORMATION_MESSAGE
             );
         } catch (IOException e) {
             JOptionPane.showMessageDialog(
                     null,
-                    "保存失败：" + e.getMessage(),
-                    "错误",
+                    "saved unsuccessfully：" + e.getMessage(),
+                    "Failed to save movies",
                     JOptionPane.ERROR_MESSAGE
             );
         }
@@ -44,28 +47,20 @@ public class MovieManager {
             addMovie.addAll(loadedMovies);
             JOptionPane.showMessageDialog(
                     null,
-                    "数据已成功从 movies.xml 加载",
-                    "加载成功",
+                    "data has been loaded from movies.xml",
+                    "loaded successfully",
                     JOptionPane.INFORMATION_MESSAGE
             );
         } catch (IOException e) {
             JOptionPane.showMessageDialog(
                     null,
-                    "加载失败：" + e.getMessage(),
-                    "错误",
+                    "loaded unsuccessfully：" + e.getMessage(),
+                    "Failed to load movies",
                     JOptionPane.ERROR_MESSAGE
             );
         }
     }
 
-
-    public MovieManager() {
-
-    }
-
-    /**
-     * 初始化预设电影数据
-     */
     public void initializeSimpleMovies() {
         addMovie.add(new Movie("The Shawshank Redemption", "Frank Darabont", 1994, 9.7, "Drama/Crime", "Hope can set you free"));
         addMovie.add(new Movie("Farewell My Concubine", "Chen Kaige", 1993, 9.6, "Drama/Romance", "A timeless classic"));
@@ -74,9 +69,7 @@ public class MovieManager {
         addMovie.add(new Movie("Spirited Away", "Hayao Miyazaki", 2001, 9.4, "Animation/Fantasy", "Best of Miyazaki"));
     }
 
-    /**
-     * 主菜单界面
-     */
+
     public void showMainMenu() {
         String[] options = {
                 "View all", "Add", "Search", "Delete", "Modify",
@@ -86,12 +79,11 @@ public class MovieManager {
         while (true) {
             int choice = JOptionPane.showOptionDialog(null, "Select operation:", "Movie Manager", 0, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
 
-            if (choice == -1 || choice == 9) { // 点击关闭或选择 Log out
+            if (choice == -1 || choice == 9) {
                 JOptionPane.showMessageDialog(null, "Logged out!");
                 return;
             }
 
-            // 利用一行式 switch 或直接调用，大大缩减长度
             switch (choice) {
                 case 0 -> displayAllMovies();
                 case 1 -> addNewMovie();
@@ -107,20 +99,18 @@ public class MovieManager {
         }
     }
 
-    // 1. 查看所有电影
+
     public void displayAllMovies() {
         if (addMovie.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No movie data available!", "Info", JOptionPane.WARNING_MESSAGE);
             return;
         }
-
-        StringBuilder sb = new StringBuilder("models.Movie List:\n");
-        for (int i = 0; i < addMovie.size(); i++) {//遍历
-            sb.append(String.format("%d. 《%s》\n", i + 1, addMovie.get(i).getTitle()));
+        StringBuilder a = new StringBuilder("models.Movie List:\n");
+        for (int i = 0; i < addMovie.size(); i++) {
+            a.append(String.format("%d. 《%s》\n", i + 1, addMovie.get(i).getTitle()));
         }
-        sb.append("\nEnter number to view details (0 to return):");
-
-        String input = JOptionPane.showInputDialog(null, sb.toString());
+        a.append("\nEnter number to view details (0 to return):");
+        String input = JOptionPane.showInputDialog(null, a.toString());
         try {
             int index = Integer.parseInt(input);
             if (index > 0 && index <= addMovie.size()) {
@@ -136,7 +126,7 @@ public class MovieManager {
         } catch (NumberFormatException ignored) {}
     }
 
-    // 2. 添加新电影
+
     private void addNewMovie() {
         try {
             String title = JOptionPane.showInputDialog("Enter models.Movie Title:");
@@ -146,7 +136,6 @@ public class MovieManager {
             double rating = Double.parseDouble(JOptionPane.showInputDialog("Enter Rating (0.0-10.0):"));
             String genre = JOptionPane.showInputDialog("Enter Genre:");
             String review = JOptionPane.showInputDialog("Enter Review:");
-
             addMovie.add(new Movie(title, director, year, rating, genre, review));
             JOptionPane.showMessageDialog(null, "Added successfully!");
         } catch (Exception e) {
@@ -154,7 +143,7 @@ public class MovieManager {
         }
     }
 
-    // 3. 搜索电影
+
     private void searchMovie() {
         String[] criteria = {"Title", "Director", "Genre", "Rating(>=)", "Year"};
         int type = JOptionPane.showOptionDialog(null, "Search by:", "Search",
@@ -187,7 +176,7 @@ public class MovieManager {
         JOptionPane.showMessageDialog(null, found ? results.toString() : "No relevant movies found.");
     }
 
-    // 4. 删除电影
+
     private void deleteMovie() {
         if (addMovie.isEmpty()) return;
 
@@ -209,7 +198,7 @@ public class MovieManager {
         }
     }
 
-    // 5. 修改电影信息
+
     private void updateMovie() {
         if (addMovie.isEmpty()) return;
         String input = JOptionPane.showInputDialog("Enter sequence number to modify:");
@@ -231,7 +220,7 @@ public class MovieManager {
         }
     }
 
-    // 6. 按评分等级显示
+
     private void showDataByRankingLevel() {
         String[] levels = {"1. Masterpiece(>=9.0)", "2. Excellent(8.0-8.9)", "3. Good(7.0-7.9)", "4. Average(6.0-6.9)", "5. Poor(<6.0)"};
         String choice = (String) JOptionPane.showInputDialog(null, "Select Level:", "Ranking Level",
@@ -240,23 +229,23 @@ public class MovieManager {
         if (choice == null) return;
         int levelNum = Character.getNumericValue(choice.charAt(0));
 
-        StringBuilder sb = new StringBuilder("Level " + levelNum + " Movies:\n");
+        StringBuilder b = new StringBuilder("Level " + levelNum + " Movies:\n");
         boolean found = false;
         for (Movie m : addMovie) {
             if (m.getRatingLevel(m.getRating()) == levelNum) {
-                sb.append(m.toString()).append("\n");
+                b.append(m.toString()).append("\n");
                 found = true;
             }
         }
-        JOptionPane.showMessageDialog(null, found ? sb.toString() : "No movies in this level.");
+        JOptionPane.showMessageDialog(null, found ? b.toString() : "No movies in this level.");
     }
 
-    // 7. 评分排行榜
+
     private void showRatingRanking() {
         if (addMovie.isEmpty()) return;
 
         ArrayList<Movie> sortedList = new ArrayList<>(addMovie);
-        // 冒泡排序逻辑
+
         for (int i = 0; i < sortedList.size() - 1; i++) {
             for (int j = 0; j < sortedList.size() - 1 - i; j++) {
                 if (sortedList.get(j).getRating() < sortedList.get(j + 1).getRating()) {
@@ -267,11 +256,11 @@ public class MovieManager {
             }
         }
 
-        StringBuilder sb = new StringBuilder("models.Movie Rating Ranking:\n");
+        StringBuilder c = new StringBuilder("models.Movie Rating Ranking:\n");
         for (int i = 0; i < sortedList.size(); i++) {
             Movie m = sortedList.get(i);
-            sb.append(String.format("Rank %d: %.1f - %s\n", i + 1, m.getRating(), m.getTitle()));
+            c.append(String.format("Rank %d: %.1f - %s\n", i + 1, m.getRating(), m.getTitle()));
         }
-        JOptionPane.showMessageDialog(null, sb.toString());
+        JOptionPane.showMessageDialog(null, c.toString());
     }
 }

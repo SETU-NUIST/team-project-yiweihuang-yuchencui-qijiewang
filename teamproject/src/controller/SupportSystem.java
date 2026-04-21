@@ -45,18 +45,18 @@ public class SupportSystem {
 
     private void giveResponse(HashSet<String> words) {
         boolean flag = false;
-        StringBuilder sb = new StringBuilder();
+        StringBuilder d = new StringBuilder();
 
         for (String word : words) {
             String response = responseMap.get(word);
             if (response != null) {
-                sb.append(response).append("\n\n");
+                d.append(response).append("\n\n");
                 flag = true;
             }
         }
 
         if (flag) {
-            JOptionPane.showMessageDialog(null, sb.toString(), "Support Response", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, d.toString(), "Support Response", JOptionPane.INFORMATION_MESSAGE);
         }
         else {
             JOptionPane.showMessageDialog(null, "Oops, that's an unknown error!", "Error", JOptionPane.ERROR_MESSAGE);

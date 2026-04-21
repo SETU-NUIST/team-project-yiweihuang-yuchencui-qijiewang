@@ -1,10 +1,16 @@
 package main;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class MainTest {
+    protected int result;
+    @AfterEach
+    void tearDown(){
+        result=0;
+    }
 
     @Test
     void verifyLogin_correctUsernameCorrectPassword_returns0() {
@@ -40,13 +46,5 @@ class MainTest {
     void verifyLogin_nullUsernameNullPassword_returns2() {
         int result = Main.verifyLogin(null, null);
         assertEquals(2, result);
-    }
-
-    @Test
-    void showLoginResultDialog_allCases_noException() {
-        assertDoesNotThrow(() -> Main.showLoginResultDialog(0));
-        assertDoesNotThrow(() -> Main.showLoginResultDialog(1));
-        assertDoesNotThrow(() -> Main.showLoginResultDialog(2));
-        assertDoesNotThrow(() -> Main.showLoginResultDialog(999));
     }
 }

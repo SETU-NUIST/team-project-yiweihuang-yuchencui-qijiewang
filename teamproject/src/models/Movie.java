@@ -18,7 +18,7 @@ public class Movie {
         this.genre = genre;
         this.review = review;
     }
-    public Movie() {//人类语言
+    public Movie() {
         this.title="unknown";
         this.director="unknown";
         this.year=0;
@@ -97,7 +97,7 @@ public class Movie {
 
 
 
-    public int getRatingLevel(double rating) {       //改写成人类语言
+    public int getRatingLevel(double rating) {
         if (this.rating >= 9.0) {
             return 1;
         } else if (this.rating >= 8.0) {
