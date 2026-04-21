@@ -7,6 +7,8 @@ import javax.swing.JOptionPane;
 public class Main {
     private static final String CORRECT_USERNAME = "Qijie,Wang";
     private static final String CORRECT_PASSWORD = "123456";
+    private static String  username;
+    private static String password;
     public static void main(String[] args) {
         JOptionPane.showMessageDialog(
                 null,
@@ -14,15 +16,18 @@ public class Main {
                 "Welcome",
                 JOptionPane.INFORMATION_MESSAGE
         );
+
         while(true)
         {
-            String username = JOptionPane.showInputDialog(
+            
+
+            username = JOptionPane.showInputDialog(
                 null,
                 "Please enter your username:",
                 "Login",
                 JOptionPane.QUESTION_MESSAGE);
 
-            String password = JOptionPane.showInputDialog(
+            password = JOptionPane.showInputDialog(
                     null,
                     "Please enter your password:",
                     "Login",
@@ -32,8 +37,7 @@ public class Main {
             String correctUsername = "Qijie,Wang";
             String correctPassword = "123456";
 
-            if (username != null && username.equals(correctUsername)) {
-                if (password != null && password.equals(correctPassword))
+                if (password.equals(correctPassword) && username.equals(correctUsername))
                 {
 
                     JOptionPane.showMessageDialog(
@@ -53,32 +57,10 @@ public class Main {
                             JOptionPane.ERROR_MESSAGE
                     );
                 }
-            } else
-            {
-                JOptionPane.showMessageDialog(
-                        null,
-                        "Wrong account, try please again",
-                        "Error",
-                        JOptionPane.ERROR_MESSAGE
-                );
-            }
-        }
-        String username = JOptionPane.showInputDialog(
-                null,
-                "Please enter your username:",
-                "Login",
-                JOptionPane.QUESTION_MESSAGE
-        );
 
-        String password = JOptionPane.showInputDialog(
-                null,
-                "Please enter your password:",
-                "Login",
-                JOptionPane.QUESTION_MESSAGE
-        );
+        }
 
         int loginResult = verifyLogin(username, password);
-        showLoginResultDialog(loginResult);
 
         MovieManager manager = new MovieManager();
         manager.initializeSimpleMovies();
@@ -95,37 +77,6 @@ public class Main {
         } else {
             return 2;
         }
-    }
-
-    public static void showLoginResultDialog(int result){
-        switch (result) {
-            case 0:
-                JOptionPane.showMessageDialog(
-                        null,
-                        "Login successful! Welcome to use the system ~",
-                        "Success",
-                        JOptionPane.INFORMATION_MESSAGE
-                );
-                break;
-            case 1:
-                JOptionPane.showMessageDialog(
-                        null,
-                        "Wrong password, please try again",
-                        "Error",
-                        JOptionPane.ERROR_MESSAGE
-                );
-                break;
-            case 2:
-                JOptionPane.showMessageDialog(
-                        null,
-                        "Wrong account, try please again",
-                        "Error",
-                        JOptionPane.ERROR_MESSAGE
-                );
-                break;
-        }
-
-
     }
 
 }
